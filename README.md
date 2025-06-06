@@ -7,15 +7,23 @@ Read this Map ··· 𐤀⦡A⦠  <br>
 
 ![](supercube.jpg)
 
+# Craft Time 
+
+![](supercube-01.jpg)
+![](supercube-02.jpg)
+![](supercube-03.jpg)
+![](supercube-04.jpg)
+![](supercube-05.jpg)
+![](supercube-06.jpg)
+![](supercube-07.jpg)
 
 # Supercube Proof of the Pythagorean Theorem
 
 ![](proof/01.jpg) 
+
+<!--
 ![](proof/02.jpg) 
  
-
-# CRAFT TIME 
-
 Supercube from Paper Straws
 
 ![](proof/03.jpg) 
@@ -76,3 +84,4 @@ Your Past And Future
 ![](resources/29.jpg)
 ![](resources/30.jpg)
 ![](resources/31.jpg)
+-->
