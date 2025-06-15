@@ -7,6 +7,8 @@ Read this Map ··· 𐤀⦡A⦠  <br>
 
 ![](supercube.jpg)
 
+![](puzzle-supercube.png)
+
 # Craft Time 
 
 ![](supercube-01.jpg)
