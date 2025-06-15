@@ -7,6 +7,8 @@ Read this Map ··· 𐤀⦡A⦠  <br>
 
 ![](supercube.jpg)
 
+![](puzzle-supercube.png)
+
 # Craft Time 
 
 ![](supercube-01.jpg)
@@ -16,6 +18,10 @@ Read this Map ··· 𐤀⦡A⦠  <br>
 ![](supercube-05.jpg)
 ![](supercube-06.jpg)
 ![](supercube-07.jpg)
+
+![](unassembled-supercube.jpg)
+![](tritek-ramp-01.jpg)
+![](tritek-ramp-02.jpg)
 
 # Supercube Proof of the Pythagorean Theorem
 

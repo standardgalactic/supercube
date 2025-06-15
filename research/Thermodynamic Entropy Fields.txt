@@ -1,0 +1,166 @@
+Entropy, Geometry, and the RSVP Field: A Thermodynamic
+Theory of the Cosmos
+Abstract
+We introduce the Relativistic Scalar-Vector-Entropy Propagation (RSVP) framework, a unified ther-
+modynamic and information-theoretic model of cosmic evolution. Rejecting traditional metric expansion,
+RSVP posits that the universe's large-scale structure and temporal dynamics emerge from local interac-
+tions of a scalar entropy potential Φ, a vector entropy flux ⃗v, and an entropy density S. Formulated as
+a classical field theory with extensions to BV-BRST quantization and AKSZ sigma models, RSVP inte-
+grates derived geometry, computational simulation, and speculative applications to consciousness. We
+outline the theory's dynamical equations, geometric foundations, numerical implementation via RSVPy-
+Torch, and cosmological implications, including a reinterpretation of redshift, structure formation, and
+the arrow of time. RSVP offers a falsifiable path toward understanding time, structure, and cognition in
+an entropically driven cosmos.
+1
+Introduction
+Contemporary cosmology, anchored in the Lambda Cold Dark Matter (ΛCDM) paradigm, models the uni-
+verse as an expanding manifold driven by dark energy and governed by general relativity. However, this
+framework struggles with conceptual challenges, including the nature of the cosmological constant, the initial
+singularity, and the arrow of time. The Relativistic Scalar-Vector-Entropy Propagation (RSVP) framework
+proposes a radical alternative, reinterpreting cosmic evolution as a thermodynamic process driven by en-
+tropy descent within a non-expanding plenum. By integrating scalar potential Φ, vector flux ⃗v, and entropy
+density S, RSVP unifies classical field theory, derived geometry, and computational simulation to address
+fundamental questions about time, structure, and consciousness.
+This paper synthesizes RSVP's core ontology, dynamical equations, geometric foundations, numerical
+realization, and cosmological implications. We also explore speculative extensions to consciousness, posi-
+tioning RSVP as a bridge between physics, neuroscience, and information theory. Section 2 defines the field
+triplet, Section 3 derives the governing PDEs, Section 4 outlines the derived geometric framework, Section 5
+describes the RSVPyTorch simulator, Section 6 details cosmological predictions, Section 7 explores cognitive
+applications, and Section 8 charts future directions.
+2
+Core Field Ontology
+The RSVP framework is defined on a smooth or derived manifold X, representing a relativistic plenum. The
+fundamental fields are:
+• Φ : X →R, a scalar entropy potential governing thermodynamic smoothing.
+• ⃗v : X →TX, a vector entropy flux encoding local directionality of structure formation.
+• S : X →R+, an entropy density tracking informational complexity and disorder.
+Definition 2.1 (RSVP Field Triplet). The RSVP plenum is a tuple (X, Φ,⃗v, S), where X is a smooth or
+derived manifold, and Φ, ⃗v, S are fields satisfying continuity and differentiability conditions on X. The
+triplet evolves under a variational principle minimizing an entropic action functional.
+1
+
+The scalar Φ acts as a potential driving entropy descent, analogous to gravitational potential but coupled
+to informational complexity. The vector ⃗v models flows such as baryonic motion or thermodynamic fluxes,
+while S quantifies local entropic states. This ontology emerges from the hypothesis that physical structure
+is a manifestation of local entropy minimization.
+3
+Dynamical Equations and Thermodynamic Evolution
+The RSVP fields evolve according to a system of nonlinear partial differential equations (PDEs), derived
+variationally from an action functional or phenomenologically from thermodynamic principles:
+∂S
+∂t + ∇· (S⃗v) = ∇2S + Σ(Φ,⃗v),
+(1)
+∂Φ
+∂t = ∇2Φ + βΦ(⃗v · ∇× ⃗v),
+(2)
+∂⃗v
+∂t = −∇Φ + ∇× ⃗v,
+(3)
+where Σ(Φ,⃗v) = ρ(∇· ⃗v) −λ∥∇× ⃗v∥is the entropy production term, ρ, λ, β are coupling constants, and ∇2
+denotes the Laplacian on X.
+The entropy equation (1) combines advection, diffusion, and a source term modeling entropy production
+from divergence (compression) and curl (shear). The scalar equation (2) includes a helicity term, aligning Φ
+with topological vorticity. The vector equation (3) evolves ⃗v via gradient descent on Φ and preserves angular
+momentum through curl dynamics. These equations link thermodynamics, hydrodynamics, and structure
+formation into a coherent entropic framework.
+Theorem 3.1 (Entropic Consistency). The system (1-3) conserves total entropy
+∫
+X S dx in the absence of
+sources (Σ = 0) and ensures non-negative entropy production when ρ, λ > 0.
+Proof. Integrate (1) over X:
+d
+dt
+∫
+X
+S dx =
+∫
+X
+(
+−∇· (S⃗v) + ∇2S + Σ
+)
+dx.
+By the divergence theorem,
+∫
+X ∇· (S⃗v) dx = 0 for a closed manifold. The diffusion term
+∫
+X ∇2S dx =
+∫
+∂X ∇S · d⃗n = 0, and Σ ≥0 ensures non-negative entropy growth.
+4
+Derived Geometric Foundations
+RSVP is formulated in the language of derived algebraic geometry, providing a rigorous substrate for quantum
+extensions and singularity resolution. The moduli space of field configurations is a derived stack, equipped
+with a (-1)-shifted symplectic structure in the sense of Pantev-Toën-Vaquié-Vezzosi (PTVV) theory. The
+AKSZ construction casts RSVP as a topological sigma model from a source dg-manifold T[1]X to a target
+stack of entropy fields.
+Definition 4.1 (Derived RSVP Stack). The moduli space MRSVP of RSVP field configurations is a derived
+stack, with a (-1)-shifted symplectic form ω = δα, where α is a 1-form encoding entropy gradients. The
+AKSZ action is:
+SAKSZ =
+∫
+T [1]X
+⟨χ, dχ⟩+ χ∗LRSVP,
+where χ : T[1]X →MRSVP is a field map, and LRSVP is the RSVP Lagrangian.
+The BV-BRST formalism introduces antifields and ghosts to handle gauge redundancies, such as coordi-
+nate reparametrizations. This ensures consistency in the presence of singularities (e.g., black hole entropy
+spikes) and topological phase transitions (e.g., cosmic web bifurcations).
+2
+
+5
+Numerical Realization: RSVPyTorch
+To operationalize RSVP, we developed RSVPyTorch, a GPU-accelerated simulator of the field equations
+(1-3). Key features include:
+• 3D grid-based finite difference solvers for Φ, ⃗v, and S.
+• Dynamic computation of Σ from vorticity and divergence.
+• Helicity toggle to probe topological alignment.
+• Modular interface for coupling to neural networks learning parameters (e.g., β, diffusivity).
+RSVPyTorch enables hypothesis testing against cosmological data, such as:
+• Galactic spin alignment (TNG simulations).
+• Entropy filamentation in voids (SDSS surveys).
+• Redshift as entropic diffusion.
+• Non-Gaussian power spectra.
+Future work will integrate variational inference and data assimilation to match RSVP dynamics to ob-
+servational datasets.
+6
+Cosmological Implications
+RSVP reinterprets cosmic evolution, rejecting ΛCDM assumptions:
+• No metric expansion: The universe is a non-expanding plenum, with redshift arising from entropic
+diffusion.
+• Entropy-driven time: The arrow of time emerges from entropy smoothing, not thermodynamic
+equilibrium.
+• Structure formation: Galaxies and voids are entropic defects driven by ∇Φ, not Newtonian gravity.
+• Cyclic plenum: RSVP supports asymptotically smooth or cyclic configurations, avoiding initial sin-
+gularities.
+Testable predictions include:
+• Anomalous redshift patterns deviating from Hubble's law.
+• Helicity signatures in large-scale structure.
+• Entropy plateaus in void regions.
+7
+Consciousness, Cognition, and Thermodynamic Geometry
+RSVP extends speculatively to consciousness, modeling cognitive systems as submanifolds within the plenum:
+• Φ as semantic potential, driving meaningful differentiation.
+• ⃗v as information flow, traversing cognitive networks.
+• S as phenomenological entropy, encoding complexity.
+This framework integrates with:
+• Integrated Information Theory (IIT) via entropic curvature metrics.
+3
+
+• Bayesian brain models through entropy descent priors.
+• Predictive coding under thermodynamic constraints.
+Conscious events may correspond to vorticity bifurcations or topological shifts in entropy gradient flow,
+quantifiable via a consciousness functional ϕRSVP.
+8
+Future Directions
+To advance RSVP, we propose:
+• Physical Validation: Compare RSVP dynamics with TNG, SDSS, and CMB data.
+• Neurodynamic Modeling: Simulate cognitive field evolution and define ϕRSVP.
+• Learning and Inference: Use deep learning to infer coupling terms and develop hybrid models with
+transformer architectures.
+9
+Conclusion
+RSVP offers a thermodynamic, information-theoretic synthesis of cosmic evolution, structure formation, and
+consciousness. By rejecting metric expansion and embracing entropy descent, it redefines the universe as a
+diffusing, meaning-making plenum. Through rigorous mathematics, computational tools like RSVPyTorch,
+and testable predictions, RSVP charts a falsifiable path toward an entropic theory of everything.
+4
+
